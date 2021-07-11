@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:van_tan_portofio/animations/entranceFader.dart';
-import 'package:van_tan_portofio/models/header_item.dart';
 import 'package:van_tan_portofio/provider/themeProvider.dart';
-import 'package:van_tan_portofio/screens/home/components/education_section.dart';
 import 'package:van_tan_portofio/screens/home/components/header.dart';
+import 'package:van_tan_portofio/sections/about/about.dart';
+import 'package:van_tan_portofio/sections/contact/contact.dart';
+import 'package:van_tan_portofio/sections/home/home.dart';
+import 'package:van_tan_portofio/sections/portfolio/portfolio.dart';
+import 'package:van_tan_portofio/sections/services/services.dart';
 import 'package:van_tan_portofio/utils/globals.dart';
 import 'package:van_tan_portofio/utils/constants.dart';
-import 'package:van_tan_portofio/widgets/arrowOnTop.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -30,9 +31,9 @@ class _HomeState extends State<Home> {
           : i == 1
               ? MediaQuery.of(context).size.height * 1
               : i == 2
-                  ? MediaQuery.of(context).size.height * 2
+                  ? MediaQuery.of(context).size.height * 1.98
                   : i == 3
-                      ? MediaQuery.of(context).size.height * 3
+                      ? MediaQuery.of(context).size.height * 2.98
                       : MediaQuery.of(context).size.height * 4,
       duration: Duration(seconds: 1),
       curve: Curves.easeInOut,
@@ -41,17 +42,15 @@ class _HomeState extends State<Home> {
 
   Widget sectionWidget(int i) {
     if (i == 0) {
-      return EducationSection();
+      return HomePage();
     } else if (i == 1) {
-      return EducationSection();
+      return About();
     } else if (i == 2) {
-      return EducationSection();
+      return Services();
     } else if (i == 3) {
-      return EducationSection();
+      return Portfolio();
     } else if (i == 4) {
-      return EducationSection();
-    } else if (i == 5) {
-      return EducationSection();
+      return Contact();
     } else {
       return Container();
     }
@@ -116,9 +115,7 @@ class _HomeState extends State<Home> {
                         ),
                       )
                     : ListTile(
-                      onTap: ()=>{
-                        _scroll(index)
-                      },
+                        onTap: () => {_scroll(index)},
                         title: Text(
                           headerItems[index].title,
                           style: TextStyle(
@@ -142,11 +139,13 @@ class _HomeState extends State<Home> {
           Header(
             scrollTo: _scroll,
           ),
-          SectionsBody(
-            scrollController: _scrollController,
-            sectionsLength: headerItems.length,
-            sectionWidget: sectionWidget,
-          ),
+          Expanded(
+              flex: 1,
+              child: SectionsBody(
+                scrollController: _scrollController,
+                sectionsLength: headerItems.length,
+                sectionWidget: sectionWidget,
+              ))
         ],
       ),
     );

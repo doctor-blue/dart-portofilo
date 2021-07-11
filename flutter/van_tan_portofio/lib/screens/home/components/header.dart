@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-// ignore: import_of_legacy_library_into_null_safe
-import 'package:flutter_icons/flutter_icons.dart';
-// ignore: import_of_legacy_library_into_null_safe
+
 import 'package:google_fonts/google_fonts.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:van_tan_portofio/models/header_item.dart';
 import 'package:van_tan_portofio/utils/constants.dart';
@@ -44,7 +41,7 @@ class HeaderLogo extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "VT",
+                  text: "</> Van Tan",
                   style: GoogleFonts.oswald(
                     color: Colors.white,
                     fontSize: 32.0,
@@ -165,7 +162,7 @@ class Header extends StatelessWidget {
                 Globals.scaffoldKey.currentState!.openEndDrawer();
               },
               child: Icon(
-                FlutterIcons.menu_fea,
+                Icons.menu,
                 color: Colors.white,
                 size: 28.0,
               ),

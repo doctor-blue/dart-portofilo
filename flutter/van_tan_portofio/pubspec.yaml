@@ -23,15 +23,19 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^2.0.0
-  responsive_framework: ^0.0.14
-  flutter_icons: ^1.1.0
-  smooth_page_indicator: ^0.2.0
-  carousel_slider: ^3.0.0
+  google_fonts: ^2.1.0
+  responsive_framework: ^0.1.4
+  # smooth_page_indicator: ^0.2.0
+  carousel_slider: ^4.0.0
   provider: ^5.0.0
-  universal_html: ^2.0.4
-  http: ^0.13.1
-  flutter_html: any
+  universal_html: ^2.0.8
+  http: ^0.13.3
+  flutter_html: ^2.1.0
+  responsive_builder: ^0.4.1
+  flip_card: ^0.5.0
+  animated_text_kit: ^4.2.1
+  mailto: ^2.0.0
+  url_launcher: ^6.0.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -53,6 +57,11 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/
+    - assets/fonts/
+    - assets/services/
+    - assets/projects/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

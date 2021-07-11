@@ -1,8 +1,5 @@
-// @dart=2.9
 import 'package:flutter/material.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:google_fonts/google_fonts.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:van_tan_portofio/screens/home/home.dart';
 import 'package:van_tan_portofio/utils/constants.dart';
@@ -15,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Flutter Portfolio",
+      title: "Nguyen Van Tan",
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       darkTheme: Theme.of(context).copyWith(
@@ -26,7 +23,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.latoTextTheme(),
       ),
       builder: (context, widget) => ResponsiveWrapper.builder(
-        ClampingScrollWrapper.builder(context, widget),
+        ClampingScrollWrapper.builder(context, widget!),
         defaultScale: true,
         breakpoints: [
           ResponsiveBreakpoint.resize(450, name: MOBILE),

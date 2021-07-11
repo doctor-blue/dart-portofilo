@@ -56,11 +56,11 @@ class _AnimatorState extends State<Animator>
   }
 }
 
-late Timer timer;
+ Timer? timer;
 Duration duration = Duration();
 
 wait() {
-  if (!timer.isActive) {
+  if (timer == null || !timer!.isActive) {
     timer = Timer(Duration(microseconds: 120), () {
       duration = Duration();
     });

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:van_tan_portofio/provider/themeProvider.dart';
-import 'package:provider/provider.dart';
 import 'package:van_tan_portofio/utils/constants.dart';
 
 class ArrowOnTop extends StatefulWidget {

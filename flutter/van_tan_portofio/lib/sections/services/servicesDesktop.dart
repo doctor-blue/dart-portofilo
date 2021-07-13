@@ -2,13 +2,11 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:van_tan_portofio/animations/bottomAnimation.dart';
 import 'package:van_tan_portofio/sections/serviceDetails/serviceDetails.dart';
 import 'package:van_tan_portofio/utils/constants.dart';
 import 'package:van_tan_portofio/widgets/adaptiveText.dart';
-import 'package:van_tan_portofio/widgets/customBtn.dart';
 import 'package:van_tan_portofio/widgets/customTextHeading.dart';
+import 'package:van_tan_portofio/widgets/hire_me_dialog.dart';
 import 'package:van_tan_portofio/widgets/serviceCard.dart';
 
 class ServiceDesktop extends StatefulWidget {
@@ -40,20 +38,18 @@ class _ServiceDesktopState extends State<ServiceDesktop> {
                   (index) => Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15.0),
                     child: ServiceCard(
-                        cardWidth: width < 1200 ? width * 0.25 : width * 0.22,
-                        cardHeight:
-                            width < 1200 ? height * 0.37 : height * 0.35,
-                        serviceIcon: kServicesIcons[index],
-                        serviceTitle: kServicesTitles[index],
-                        serviceDescription: kServicesDescriptions[index],
-                        serviceLink: kServicesLinks[index],
-                        cardBack: ServiceCardBackWidget(
-                            serviceTitle: kServicesTitles[index],
-                            serviceDesc: kServicesDescriptions[index],
-                            height: height,
-                            width: width),
-                      ),
-                   
+                      cardWidth: width < 1200 ? width * 0.25 : width * 0.22,
+                      cardHeight: width < 1200 ? height * 0.37 : height * 0.35,
+                      serviceIcon: services[index].icon,
+                      serviceTitle: services[index].title,
+                      serviceDescription: services[index].description,
+                      serviceLink: services[index].link,
+                      cardBack: ServiceCardBackWidget(
+                          serviceTitle: services[index].title,
+                          serviceDesc: services[index].description,
+                          height: height,
+                          width: width),
+                    ),
                   ),
                 ),
               ),
@@ -63,26 +59,25 @@ class _ServiceDesktopState extends State<ServiceDesktop> {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  for (int index = 2; index < kServicesIcons.length; index++)
+                  for (int index = 2; index < services.length; index++)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),
                       child: ServiceCard(
-                          cardWidth: width < 1200 ? width * 0.25 : width * 0.22,
-                          cardHeight:
-                              width < 1200 ? height * 0.37 : height * 0.35,
-                          serviceIcon: index == 3
-                              ? "assets/services/open_b.png"
-                              : kServicesIcons[index],
-                          serviceTitle: kServicesTitles[index],
-                          serviceDescription: kServicesDescriptions[index],
-                          serviceLink: kServicesLinks[index],
-                          cardBack: ServiceCardBackWidget(
-                            serviceDesc: kServicesDescriptions[index],
-                            serviceTitle: kServicesTitles[index],
-                            height: height,
-                            width: width,
-                          ),
-                        
+                        cardWidth: width < 1200 ? width * 0.25 : width * 0.22,
+                        cardHeight:
+                            width < 1200 ? height * 0.37 : height * 0.35,
+                        serviceIcon: index == 3
+                            ? "assets/services/open_b.png"
+                            : services[index].icon,
+                        serviceTitle: services[index].title,
+                        serviceDescription: services[index].description,
+                        serviceLink: services[index].link,
+                        cardBack: ServiceCardBackWidget(
+                          serviceDesc: services[index].description,
+                          serviceTitle: services[index].title,
+                          height: height,
+                          width: width,
+                        ),
                       ),
                     ),
                 ],
@@ -102,8 +97,7 @@ class ServiceCardBackWidget extends StatelessWidget {
       required this.width,
       required this.serviceDesc,
       required this.serviceTitle})
-     :
-        super(key: key);
+      : super(key: key);
 
   final double height;
   final double width;
@@ -118,12 +112,13 @@ class ServiceCardBackWidget extends StatelessWidget {
         AdaptiveText(
           serviceDesc,
           style: GoogleFonts.montserrat(
-            color:  Colors.white,
+            color: Colors.white,
             fontSize: height * 0.015,
             letterSpacing: 2.0,
             fontWeight: FontWeight.w400,
             height: width < 900 ? 1.5 : 1.8,
-          ), textAlign: null,
+          ),
+          textAlign: null,
         ),
         const SizedBox(height: 25.0),
         MaterialButton(
@@ -132,10 +127,10 @@ class ServiceCardBackWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(5.0),
               side: BorderSide(color: kPrimaryColor)),
           onPressed: () {
-            serviceTitle == kServicesTitles[1]
-                ? launchURL(kServicesLinks[1])
-                : serviceTitle == kServicesTitles[2]
-                    ? launchURL(kServicesLinks[2])
+            serviceTitle == services[1].title
+                ? launchURL(services[1].link)
+                : serviceTitle == services[2].title
+                    ? launchURL(services[2].link)
                     : Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -168,55 +163,7 @@ class ServiceCardBackWidget extends StatelessWidget {
             color: kPrimaryColor,
             onPressed: () => showDialog(
                 context: context,
-                builder: (contecxt) => AlertDialog(
-                      backgroundColor: Colors.grey[900],
-                      title: AdaptiveText(
-                        "Hire Me!",
-                        style: TextStyle(
-                            fontSize: 32.0,
-                            color: Colors.white), textAlign: null,
-                      ),
-                      actions: [
-                        TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: Text("Back"))
-                      ],
-                      content: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CustomFilledBtn(
-                            height: 40.0,
-                            onPressed: () =>
-                                launchURL("https://google.com"),
-                            btnColor: Color(0xff34CB62),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                // Icon(FontAwesomeIcons.whatsapp),
-                                const SizedBox(width: 8.0),
-                                Text("google.com"),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 20.0),
-                          CustomFilledBtn(
-                            height: 40.0,
-                            onPressed: () => launchURL(
-                                "https://google.com"),
-                            btnColor: Color(0xff13A800),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-        
-                                const SizedBox(width: 8.0),
-                                Text("google.com"),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
+                builder: (context) => createHireMeDialog(context)),
             child: Text(
               "HIRE ME!",
               style: TextStyle(

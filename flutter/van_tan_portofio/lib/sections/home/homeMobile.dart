@@ -95,10 +95,10 @@ class _HomeMobileState extends State<HomeMobile> {
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    for (int i = 0; i < socialIcons.length; i++)
+                    for (int i = 0; i < socicals.length; i++)
                       SocialMediaIconBtn(
-                        icon: socialIcons[i],
-                        socialLink: socialLinks[i],
+                        icon: socicals[i].icon,
+                        socialLink: socicals[i].link,
                         height: height * 0.03,
                         horizontalPadding: 2.0,
                       )

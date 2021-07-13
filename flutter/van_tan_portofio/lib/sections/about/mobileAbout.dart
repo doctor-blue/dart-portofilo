@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +7,6 @@ import 'package:van_tan_portofio/widgets/customBtn.dart';
 import 'package:van_tan_portofio/widgets/customTextHeading.dart';
 
 class AboutMobile extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -23,9 +20,16 @@ class AboutMobile extends StatelessWidget {
         children: [
           CustomSectionHeading(text: "\nAbout Me"),
           CustomSectionSubHeading(text: "Get to know me"),
-          Image.asset(
-            'assets/mob.png',
-            height: height * 0.27,
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(height * 0.27 / 2),
+                image: DecorationImage(
+                  image: AssetImage('assets/mob.png'),
+                  fit: BoxFit.fill,
+                )),
+                height: height * 0.27,
+                width: height * 0.27,
+            // child: Image.asset('assets/mob.png', height: height * 0.7),
           ),
           SizedBox(
             height: height * 0.03,
@@ -48,7 +52,7 @@ class AboutMobile extends StatelessWidget {
             style: GoogleFonts.montserrat(
               fontSize: height * 0.022,
               fontWeight: FontWeight.w400,
-              color:  Colors.white,
+              color: Colors.white,
             ),
           ),
           SizedBox(
@@ -72,7 +76,6 @@ class AboutMobile extends StatelessWidget {
               ),
             ),
           ),
-        
           SizedBox(
             height: height * 0.02,
           ),
@@ -95,16 +98,11 @@ class AboutMobile extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: OutlinedCustomBtn(
-                      btnText: "Resume",
-                      onPressed: () {
-                        }),
+                  child: OutlinedCustomBtn(btnText: "Resume", onPressed: () {}),
                 ),
-               
               ],
             ),
           ),
-         
         ],
       ),
     );

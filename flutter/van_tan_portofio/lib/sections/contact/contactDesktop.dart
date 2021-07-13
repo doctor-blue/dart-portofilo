@@ -20,18 +20,18 @@ class ContactDesktop extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
-              kContactIcons.length,
+              contacts.length,
               (index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
                 child: ProjectCard(
                     cardWidth: width < 1200 ? width * 0.3 : width * 0.25,
                     cardHeight: width < 1200 ? height * 0.28 : height * 0.24,
-                    projectIconData: kContactIcons[index],
-                    projectTitle: kContactTitles[index],
-                    projectDescription: kContactDetails[index], backImage: null,
+                    projectIconData: contacts[index].icon,
+                    projectTitle: contacts[index].title,
+                    projectDescription: contacts[index].detail, backImage: null,
                      bottomWidget: Container(), 
                      projectIcon: null, 
-                     projectLink: '',
+                     projectLinks: [], onTap: () {  },
                   ),
                 ),
               ),

@@ -75,7 +75,7 @@ class ServiceDetailsDescription extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 15.0),
-          serviceTitle == kServicesTitles[0]
+          serviceTitle == services[0].title
               ? Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -86,8 +86,8 @@ class ServiceDetailsDescription extends StatelessWidget {
                     const SizedBox(width: 8.0),
                     AdaptiveText(
                       "Would you like to work with me? Awesome!",
-                      style: TextStyle(
-                          color: Colors.white), textAlign: null,
+                      style: TextStyle(color: Colors.white),
+                      textAlign: null,
                     ),
                   ],
                 )
@@ -96,18 +96,19 @@ class ServiceDetailsDescription extends StatelessWidget {
           AdaptiveText(
             desc,
             style: GoogleFonts.montserrat(
-                color:  Colors.white,
+                color: Colors.white,
                 fontSize: 20.0,
                 letterSpacing: 1.2,
-                height: 3.0), textAlign: null,
+                height: 3.0),
+            textAlign: null,
           ),
           Expanded(child: Container()),
           Align(
             alignment: Alignment.center,
             child: AdaptiveText(
               "Get in Touch!",
-              style: GoogleFonts.montserrat(
-                  color: Colors.white), textAlign: null,
+              style: GoogleFonts.montserrat(color: Colors.white),
+              textAlign: null,
             ),
           ),
           const SizedBox(height: 20.0),
@@ -132,8 +133,7 @@ class ServiceDetailsDescription extends StatelessWidget {
             alignment: Alignment.center,
             child: CustomFilledBtn(
               height: 40.0,
-              onPressed: () => launchURL(
-                  "https://google.com"),
+              onPressed: () => launchURL("https://google.com"),
               btnColor: Color(0xff13A800),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -165,43 +165,43 @@ class _ServicesShowCaseState extends State<ServicesShowCase> {
     Size screenSize = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
-          color:  Colors.grey[900],
+          color: Colors.grey[900],
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25.0),
             bottomLeft: Radius.circular(25.0),
           ),
-          boxShadow:  [
-                  BoxShadow(
-                    color: Colors.black38,
-                    offset: Offset(-2, 0),
-                    blurRadius: 12.0,
-                  )
-                ]
-              ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black38,
+              offset: Offset(-2, 0),
+              blurRadius: 12.0,
+            )
+          ]),
       padding: const EdgeInsets.all(15.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AdaptiveText(" My Previous Work",
-              style: GoogleFonts.montserrat(
-                  fontSize: 24.0,
-                  letterSpacing: 1.2,
-                  color:
-                       Colors.white), textAlign: null,),
+          AdaptiveText(
+            " My Previous Work",
+            style: GoogleFonts.montserrat(
+                fontSize: 24.0, letterSpacing: 1.2, color: Colors.white),
+            textAlign: null,
+          ),
           const SizedBox(height: 20.0),
           Row(
             children: [
               AdaptiveText(
-                " ${kProjectsTitles[_currentIndex]} ",
+                " ${projects[_currentIndex].title} ",
                 style: GoogleFonts.montserrat(
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.2,
-                  color:Colors.white,
-                ), textAlign: null,
+                  color: Colors.white,
+                ),
+                textAlign: null,
               ),
-              kProjectsTitles[_currentIndex] == kProjectsTitles[1]
+              projects[_currentIndex].title == projects[1].title
                   ? InkWell(
                       onTap: () => launchURL(
                           "https://play.google.com/store/apps/details?id=com.hmz.al_quran&pli=1"),
@@ -212,9 +212,9 @@ class _ServicesShowCaseState extends State<ServicesShowCase> {
                   : Container(),
               Expanded(child: Container()),
               IconButton(
-                onPressed: () => launchURL(kProjectsLinks[_currentIndex]),
-                icon: Icon(Icons.arrow_forward,
-                    color: Colors.white),
+                onPressed: () =>
+                    launchURL(projects[_currentIndex].projectLink.toString()),
+                icon: Icon(Icons.arrow_forward, color: Colors.white),
               ),
             ],
           ),
@@ -240,7 +240,7 @@ class _ServicesShowCaseState extends State<ServicesShowCase> {
                   width: screenSize.width,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage(kProjectsBanner[_currentIndex]),
+                          image: AssetImage(projects[_currentIndex].banner),
                           fit: BoxFit.cover)),
                   child: SizedBox(
                     height: screenSize.height * 0.55,
@@ -260,10 +260,10 @@ class _ServicesShowCaseState extends State<ServicesShowCase> {
                   child: Align(
                     alignment: Alignment.center,
                     child: CarouselSlider.builder(
-                      itemCount: kProjectsBanner.length,
+                      itemCount: projects.length,
                       carouselController: _carouselController,
                       itemBuilder: (context, index, i) => Image.asset(
-                        kProjectsBanner[index],
+                        projects[index].banner,
                         height: 300.0,
                       ),
                       options: CarouselOptions(
@@ -284,8 +284,8 @@ class _ServicesShowCaseState extends State<ServicesShowCase> {
           const SizedBox(height: 20.0),
           Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: kProjectsBanner.map((project) {
-                int index = kProjectsBanner.indexOf(project);
+              children: projects.map((project) {
+                int index = projects.indexOf(project);
                 return AnimatedContainer(
                   duration: Duration(milliseconds: 200),
                   width: _currentIndex == index ? 25.0 : 7.0,

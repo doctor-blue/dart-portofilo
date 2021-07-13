@@ -17,20 +17,20 @@ class PortfolioMobileTab extends StatelessWidget {
           CustomSectionSubHeading(
               text: "Here are few samples of my previous work :)\n\n"),
           CarouselSlider.builder(
-            itemCount: kProjectsBanner.length,
-            itemBuilder: (BuildContext context, int itemIndex, int i) =>
+            itemCount: projects.length,
+            itemBuilder: (BuildContext context, int itemIndex, int index) =>
                 Padding(
               padding: const EdgeInsets.symmetric(vertical: 15.0),
               child: ProjectCard(
                 cardWidth: width < 650 ? width * 0.8 : width * 0.4,
-                projectIcon: kProjectsIcons[i],
-                projectTitle: kProjectsTitles[i],
-                projectDescription: kProjectsDescriptions[i],
-                projectLink: kProjectsLinks[i],
-                 backImage: kProjectsBanner[i], 
+                  backImage: null,
+                  projectIcon: projects[index].logo,
+                  projectTitle: projects[index].title,
+                  projectDescription: projects[index].description,
+                  projectLinks: projects[index].projectLink,
                  bottomWidget: Container(),
-                  cardHeight: 20, 
-                  projectIconData: null,
+                  cardHeight: width < 650 ? height * 0.6 : height * 0.8, 
+                  projectIconData: null, onTap: () {  },
               ),
             ),
             options: CarouselOptions(
@@ -48,7 +48,7 @@ class PortfolioMobileTab extends StatelessWidget {
           OutlinedCustomBtn(
               btnText: "See More",
               onPressed: () {
-                launchURL("https://github.com/mhmzdev");
+                launchURL("https://github.com/doctor-blue");
               })
         ],
       ),

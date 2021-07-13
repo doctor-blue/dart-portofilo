@@ -8,6 +8,7 @@ import 'package:van_tan_portofio/utils/constants.dart';
 import 'package:van_tan_portofio/utils/globals.dart';
 import 'package:van_tan_portofio/utils/screen_helper.dart';
 import 'package:van_tan_portofio/utils/extensions.dart';
+import 'package:van_tan_portofio/widgets/hire_me_dialog.dart';
 
 List<HeaderItem> headerItems = [
   HeaderItem(
@@ -90,7 +91,10 @@ class HeaderRow extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 5.0),
                         child: TextButton(
-                          onPressed: item.onTap,
+                          onPressed: () => showDialog(
+                              context: context,
+                              builder: (context) =>
+                                  createHireMeDialog(context)),
                           child: Text(
                             item.title,
                             style: TextStyle(
@@ -181,7 +185,9 @@ class Header extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           HeaderLogo(),
-          HeaderRow(scrollTo: scrollTo,),
+          HeaderRow(
+            scrollTo: scrollTo,
+          ),
         ],
       ),
     );

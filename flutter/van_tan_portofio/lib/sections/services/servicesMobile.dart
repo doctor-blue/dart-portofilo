@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:provider/provider.dart';
 import 'package:van_tan_portofio/sections/services/servicesDesktop.dart';
 import 'package:van_tan_portofio/utils/constants.dart';
@@ -24,13 +25,13 @@ class ServiceMobile extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: ServiceCard(
                   cardWidth: width < 650 ? width * 0.8 : width * 0.5,
-                  serviceIcon: kServicesIcons[i],
-                  serviceTitle: kServicesTitles[i],
-                  serviceDescription: kServicesDescriptions[i],
-                  serviceLink: kServicesLinks[i],
+                  serviceIcon: services[i].icon,
+                  serviceTitle: services[i].title,
+                  serviceDescription: services[i].description,
+                  serviceLink: services[i].link,
                   cardBack: ServiceCardBackWidget(
-                    serviceTitle: kServicesTitles[i],
-                    serviceDesc: kServicesDescriptions[i],
+                    serviceTitle: services[i].title,
+                    serviceDesc: services[i].description,
                     height: height,
                     width: width,
                   ),

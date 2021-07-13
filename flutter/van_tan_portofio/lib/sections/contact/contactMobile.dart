@@ -13,23 +13,22 @@ class ContactMobileTab extends StatelessWidget {
       child: Column(
         children: [
           CustomSectionHeading(text: "\nGet in Touch"),
-          CustomSectionSubHeading(
-              text: "Let's build something together \n\n"),
+          CustomSectionSubHeading(text: "Let's build something together \n\n"),
           CarouselSlider.builder(
-            itemCount: 3,
+            itemCount: 2,
             itemBuilder: (BuildContext context, int itemIndex, int i) =>
                 Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: ProjectCard(
                 cardWidth: width > 480 ? width * 0.5 : width * 0.8,
-                projectIconData: kContactIcons[i],
-                projectTitle: kContactTitles[i],
-                projectDescription: kContactDetails[i], 
-                backImage: null, 
-                bottomWidget: Container(), 
-                cardHeight: 10,
-                 projectIcon: null,
-                  projectLink: '',
+                projectIconData: contacts[i].icon,
+                projectTitle: contacts[i].title,
+                projectDescription: contacts[i].detail,
+                backImage: null,
+                bottomWidget: Container(),
+                cardHeight: 20,
+                projectIcon: null,
+                projectLinks: [], onTap: () {  },
               ),
             ),
             options: CarouselOptions(

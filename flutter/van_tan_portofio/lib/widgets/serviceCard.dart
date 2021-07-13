@@ -33,7 +33,7 @@ class _ServiceCardState extends State<ServiceCard> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    
     return InkWell(
       onTap: () {},
       onHover: (isHovering) {
@@ -135,23 +135,6 @@ class _ServiceCardState extends State<ServiceCard> {
                       Colors.white,
                 ),
               ),
-              // SizedBox(
-              //   height: height * 0.01,
-              // ),
-              // Expanded(
-              //   child: Text(
-              //     widget.serviceDescription,
-              //     textAlign: TextAlign.center,
-              //     style: GoogleFonts.montserrat(
-              //         color: _themeProvider.lightTheme
-              //             ? Colors.black
-              //             : Colors.white,
-              //         fontSize: height * 0.015,
-              //         letterSpacing: 2.0,
-              //         fontWeight: FontWeight.w200,
-              //         height: width < 900 ? 1.5 : 1.8),
-              //   ),
-              // )
             ],
           ),
         ),

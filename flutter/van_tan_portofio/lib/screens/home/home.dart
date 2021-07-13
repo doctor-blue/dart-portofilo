@@ -9,6 +9,7 @@ import 'package:van_tan_portofio/sections/portfolio/portfolio.dart';
 import 'package:van_tan_portofio/sections/services/services.dart';
 import 'package:van_tan_portofio/utils/globals.dart';
 import 'package:van_tan_portofio/utils/constants.dart';
+import 'package:van_tan_portofio/widgets/hire_me_dialog.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -102,7 +103,10 @@ class _HomeState extends State<Home> {
                           ),
                           padding: EdgeInsets.symmetric(horizontal: 28.0),
                           child: TextButton(
-                            onPressed: headerItems[index].onTap,
+                            onPressed: () => showDialog(
+                                context: context,
+                                builder: (context) =>
+                                    createHireMeDialog(context)),
                             child: Text(
                               headerItems[index].title,
                               style: TextStyle(

@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:van_tan_portofio/animations/bottomAnimation.dart';
 import 'package:van_tan_portofio/animations/entranceFader.dart';
 import 'package:van_tan_portofio/utils/constants.dart';
 import 'package:van_tan_portofio/widgets/adaptiveText.dart';
@@ -116,9 +115,9 @@ class HomeDesktop extends StatelessWidget {
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: List.generate(socialIcons.length, (index) => SocialMediaIconBtn(
-                        icon: socialIcons[index],
-                        socialLink: socialLinks[index],
+                  children: List.generate(socicals.length, (index) => SocialMediaIconBtn(
+                        icon: socicals[index].icon,
+                        socialLink: socicals[index].link,
                         height: height * 0.035,
                         horizontalPadding: width * 0.005,
                       

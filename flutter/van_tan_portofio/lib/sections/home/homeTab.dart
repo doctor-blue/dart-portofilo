@@ -1,8 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:van_tan_portofio/provider/themeProvider.dart';
 import 'package:van_tan_portofio/utils/constants.dart';
 import 'package:van_tan_portofio/widgets/socialMediaIcon.dart';
 
@@ -101,10 +99,10 @@ class HomeTab extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    for (int i = 0; i < socialIcons.length; i++)
+                    for (int i = 0; i < socicals.length; i++)
                       SocialMediaIconBtn(
-                        icon: socialIcons[i],
-                        socialLink: socialLinks[i],
+                        icon: socicals[i].icon,
+                        socialLink: socicals[i].link,
                         height: height * 0.035,
                         horizontalPadding: width * 0.01,
                       )

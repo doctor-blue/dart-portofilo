@@ -28,62 +28,30 @@ class _ServiceDesktopState extends State<ServiceDesktop> {
         children: [
           CustomSectionHeading(text: "\nWhat I Do"),
           CustomSectionSubHeading(
-              text: "I may not be perfect, but I'm surely of some help :)\n\n"),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  2,
-                  (index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                    child: ServiceCard(
-                      cardWidth: width < 1200 ? width * 0.25 : width * 0.22,
-                      cardHeight: width < 1200 ? height * 0.37 : height * 0.35,
-                      serviceIcon: services[index].icon,
+              text: "I may not be perfect, but I'm surely of some help\n\n"),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(
+              services.length,
+              (index) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                child: ServiceCard(
+                  cardWidth: width < 1200 ? width * 0.25 : width * 0.22,
+                  cardHeight: width < 1200 ? height * 0.37 : height * 0.35,
+                  serviceIcon: services[index].icon,
+                  serviceTitle: services[index].title,
+                  serviceDescription: services[index].description,
+                  serviceLink: services[index].link,
+                  cardBack: ServiceCardBackWidget(
                       serviceTitle: services[index].title,
-                      serviceDescription: services[index].description,
-                      serviceLink: services[index].link,
-                      cardBack: ServiceCardBackWidget(
-                          serviceTitle: services[index].title,
-                          serviceDesc: services[index].description,
-                          height: height,
-                          width: width),
-                    ),
-                  ),
+                      serviceDesc: services[index].description,
+                      height: height,
+                      width: width),
                 ),
               ),
-              SizedBox(
-                height: height * 0.04,
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  for (int index = 2; index < services.length; index++)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                      child: ServiceCard(
-                        cardWidth: width < 1200 ? width * 0.25 : width * 0.22,
-                        cardHeight:
-                            width < 1200 ? height * 0.37 : height * 0.35,
-                        serviceIcon: index == 3
-                            ? "assets/services/open_b.png"
-                            : services[index].icon,
-                        serviceTitle: services[index].title,
-                        serviceDescription: services[index].description,
-                        serviceLink: services[index].link,
-                        cardBack: ServiceCardBackWidget(
-                          serviceDesc: services[index].description,
-                          serviceTitle: services[index].title,
-                          height: height,
-                          width: width,
-                        ),
-                      ),
-                    ),
-                ],
-              ),
-            ],
-          )
+            ),
+          ),
         ],
       ),
     );
@@ -114,13 +82,13 @@ class ServiceCardBackWidget extends StatelessWidget {
           style: GoogleFonts.montserrat(
             color: Colors.white,
             fontSize: height * 0.015,
-            letterSpacing: 2.0,
-            fontWeight: FontWeight.w400,
+            letterSpacing: 1.5,
+            fontWeight: FontWeight.w300,
             height: width < 900 ? 1.5 : 1.8,
           ),
           textAlign: null,
         ),
-        const SizedBox(height: 25.0),
+        const SizedBox(height: 15.0),
         MaterialButton(
           hoverColor: kPrimaryColor.withAlpha(150),
           shape: RoundedRectangleBorder(
@@ -149,15 +117,15 @@ class ServiceCardBackWidget extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 10.0),
+        SizedBox(height: height * 0.001),
         Container(
           width: 250.0,
           height: 0.5,
           color: Colors.grey[100],
         ),
-        const SizedBox(height: 10.0),
+        const SizedBox(height: 20.0),
         SizedBox(
-          height: 40.0,
+          height: 25.0,
           width: 150.0,
           child: MaterialButton(
             color: kPrimaryColor,

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:van_tan_portofio/provider/themeProvider.dart';
@@ -32,9 +33,9 @@ class _HomeState extends State<Home> {
           : i == 1
               ? MediaQuery.of(context).size.height * 1
               : i == 2
-                  ? MediaQuery.of(context).size.height * 1.98
+                  ? MediaQuery.of(context).size.height * 1.9
                   : i == 3
-                      ? MediaQuery.of(context).size.height * 2.98
+                      ? MediaQuery.of(context).size.height * 2.5
                       : MediaQuery.of(context).size.height * 4,
       duration: Duration(seconds: 1),
       curve: Curves.easeInOut,
@@ -169,11 +170,15 @@ class SectionsBody extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     return Container(
       height: MediaQuery.of(context).size.height - 70,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
-        // physics: !kIsWeb ? ScrollPhysics() : NeverScrollableScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        physics: width < 800 ? ScrollPhysics() : NeverScrollableScrollPhysics(),
         controller: scrollController,
         itemCount: sectionsLength,
         itemBuilder: (context, index) => sectionWidget(index),

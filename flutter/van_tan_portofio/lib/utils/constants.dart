@@ -71,9 +71,9 @@ final services = [
 
 final projects = [
   Project(
-      title: "Longway",
+      title: "Alpha work",
       description: "Business management application",
-      banner: "assets/projects/longway.png",
+      banner: "assets/projects/alpha_work.png",
       logo: "assets/projects/longway_logo.png",
       projectLink: [
         Link(
